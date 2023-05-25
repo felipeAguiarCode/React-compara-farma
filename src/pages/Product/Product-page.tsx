@@ -1,14 +1,30 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Product-page.css'
+import { useState } from 'react'
 
 import {
   SideMenu,
   UnitTable,
   MainHeader
 } from '../../components';
+import { PointAdd } from '../../components/PointAdd/PointAdd';
 
 
 function ProductPage() {
+  const [showModal, setShowModal] = useState(false)
+
+  const handleOpenModal = () => {
+    setShowModal(!showModal)
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+  };
+
+  // const handleAdd = () => {
+  //   console.log('Dados cadastrados:');
+  // }
+
   return (
     <>
       <div>
@@ -28,6 +44,7 @@ function ProductPage() {
               <button
                 type="button"
                 className="btn btn-success"
+                onClick={handleOpenModal}
               >
                 Cadastrar Novo Ponto
               </button>
@@ -41,8 +58,15 @@ function ProductPage() {
         </div>
       </div>
 
+      {showModal &&
+        <PointAdd
+          onAdd={handleOpenModal}
+          onClose={handleCloseModal}
+        />
+      }
+
     </>
-  );
+  )
 }
 
 export default ProductPage

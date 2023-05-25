@@ -2,10 +2,28 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import TableRow from './UnitTableRow'
 import { downloadExcel } from '../../services/downloadExcel'
+import { useEffect, useState } from 'react'
+import { fetchDataById } from '../../services/pointsService'
 
 
 function UnitTable() {
 
+  const [dataPointss, setDataPointss] = useState([]);
+
+  useEffect(() => {
+    const fetchPoints = async () => {
+      try {
+        const response = await fetchDataById(22)
+        setDataPointss(response.data);
+      } catch (error) {
+        console.error('Erro ao obter os dados:', error);
+      }
+    };
+
+    fetchPoints();
+  }, [])
+
+  console.log(dataPointss)
   const dataPoints = [
     {
       number: 2,
