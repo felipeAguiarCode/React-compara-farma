@@ -6,17 +6,21 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 function MainHeader() {
   return (
     <>
-      <Navbar bg="info" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">
+      <Navbar
+        bg="info"
+        variant="dark"
+        style={{ marginLeft: '-15%' }}
+      >
+        <Container >
+          <Navbar.Brand href="#home" >
             <i className='bi bi-capsule'></i>
             {' '}
             Compara farma
           </Navbar.Brand>
         </Container>
-      </Navbar>
+      </Navbar >
     </>
   );
 }
 
-export default MainHeader;
+export default MainHeader

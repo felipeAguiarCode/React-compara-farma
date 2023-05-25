@@ -12,7 +12,10 @@ function ProductPage() {
   return (
     <>
       <div>
-        <MainHeader />
+
+        <div id="main-header">
+          <MainHeader />
+        </div>
 
         <div id="content-area">
 
@@ -22,7 +25,12 @@ function ProductPage() {
 
           <div id="content-right-area">
             <div>
-              <button type="button" className="btn btn-success">Cadastrar Novo Ponto</button>
+              <button
+                type="button"
+                className="btn btn-success"
+              >
+                Cadastrar Novo Ponto
+              </button>
             </div>
             <div id="table-area">
               <UnitTable />
@@ -37,4 +45,4 @@ function ProductPage() {
   );
 }
 
-export default ProductPage;
+export default ProductPage
