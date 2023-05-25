@@ -1,0 +1,19 @@
+#content-area{
+  display: flex;
+  flex-direction: row;
+  height:100vh;
+}
+
+#menu-area{
+  width:20%;
+  height:100%;
+}
+
+#table-area{
+  padding-top:  2rem;
+}
+
+#content-right-area{
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
