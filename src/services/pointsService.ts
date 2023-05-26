@@ -1,4 +1,4 @@
-export async function fetchPointDataById(id: number): Promise<Response> {
+export async function fetchPointDataById(id: number) {
   try {
     const url = `https://n8n.ninjadaautomacao.com/webhook/ifood/points?userid=${id}`
     const response = await fetch(url)

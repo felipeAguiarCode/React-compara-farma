@@ -21,7 +21,6 @@ export function UnitTable() {
     const fetchData = async () => {
       try {
         const response = await fetchPointDataById(22)
-        // const json = await response.json()
         setDataPoints(response)
         setIsLoading(true)
 
