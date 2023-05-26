@@ -41,13 +41,9 @@ function ProductPage() {
 
           <div id="content-right-area">
             <div>
-              <button
-                type="button"
-                className="btn btn-success"
-                onClick={handleOpenModal}
-              >
-                Cadastrar Novo Ponto
-              </button>
+              <h1>
+                PONTOS DE NEGÓCIO
+              </h1>
             </div>
             <div id="table-area">
               <UnitTable />

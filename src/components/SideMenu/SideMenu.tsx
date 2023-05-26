@@ -21,15 +21,16 @@ function SideMenu() {
             </li>
 
 
-            {/* <li className="nav-item text-white fs-4">
+            <li className="nav-item text-white fs-4">
               <a
                 className="nav-link text-white fs-5" aria-current="page"
                 href="#"
               >
-                <i className='bi bi-people'></i>
-                <span className='ms-2'>Users</span>
+                <i className='bi bi-plus'></i>
+                <span className='ms-2'>Novo Ponto</span>
               </a>
-            </li> */}
+            </li>
+
 
           </ul>
 

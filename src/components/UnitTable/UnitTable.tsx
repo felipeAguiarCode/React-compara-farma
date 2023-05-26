@@ -14,7 +14,7 @@ interface Data {
 }
 
 export function UnitTable() {
-  const [dataPoints, setDataPoints] = useState<Data[]>([])
+  const [dataPoints, setDataPoints] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function UnitTable() {
       try {
         const response = await fetchPointDataById(22)
         // const json = await response.json()
-        setDataPoints(response.points)
+        setDataPoints(response)
         setIsLoading(true)
 
       } catch (error) {
