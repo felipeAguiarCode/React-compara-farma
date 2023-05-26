@@ -44,6 +44,7 @@ function ProductPage() {
               <h1>
                 PONTOS DE NEGÓCIO
               </h1>
+              <hr></hr>
             </div>
             <div id="table-area">
               <UnitTable />

@@ -1,6 +1,7 @@
 import './SideMenu.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { Link } from 'react-router-dom';
 
 
 function SideMenu() {
@@ -16,7 +17,11 @@ function SideMenu() {
                 href="#"
               >
                 <i className='bi bi-house'></i>
-                <span className='ms-2'>Pontos</span>
+                <Link
+                  to="/products"
+                  className='ms-2 text-white'>
+                  Pontos
+                </Link>
               </a>
             </li>
 
@@ -27,7 +32,11 @@ function SideMenu() {
                 href="#"
               >
                 <i className='bi bi-plus'></i>
-                <span className='ms-2'>Novo Ponto</span>
+                <Link
+                  to="/newpoint"
+                  className='ms-2 text-white'>
+                  Pontos
+                </Link>
               </a>
             </li>
 
