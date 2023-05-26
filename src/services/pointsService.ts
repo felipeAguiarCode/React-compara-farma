@@ -2,6 +2,7 @@ export async function fetchPointDataById(id: number) {
   try {
     const url = `https://n8n.ninjadaautomacao.com/webhook/ifood/points?userid=${id}`
     const response = await fetch(url)
+
     if (response.ok) {
       const data = await response.json()
       return data
