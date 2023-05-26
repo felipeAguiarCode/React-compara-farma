@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react'
 import { downloadExcel } from '../../services/downloadExcel'
 import UnitTableRow from './UnitTableRow'
+import { fetchPointDataById } from '../../services/pointsService';
 
 interface Data {
   city: string;
@@ -19,12 +20,9 @@ export function UnitTable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://n8n.ninjadaautomacao.com/webhook/ifood/points?userid=22"
-        );
-
-        const json = await response.json()
-        setDataPoints(json.points)
+        const response = await fetchPointDataById(22)
+        // const json = await response.json()
+        setDataPoints(response.points)
         setIsLoading(true)
 
       } catch (error) {
@@ -56,7 +54,11 @@ export function UnitTable() {
         <tbody>
 
           {!isLoading &&
-            <p>carregando...</p>
+            <tr>
+              <td>
+                <p>Carregando...</p>
+              </td>
+            </tr>
           }
 
           {isLoading &&

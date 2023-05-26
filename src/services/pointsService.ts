@@ -1,12 +1,15 @@
-import axios, { AxiosResponse } from 'axios'
-
-export async function fetchDataById(id: number): Promise<AxiosResponse> {
+export async function fetchPointDataById(id: number): Promise<Response> {
   try {
-    // const url = `https://n8n.ninjadaautomacao.com/webhook/ifood/points?userid=${id}`
-    const url = 'https://pokeapi.co/api/v2/pokemon/ditto'
-    const response = await axios.get(url)
-    return response.data
+    const url = `https://n8n.ninjadaautomacao.com/webhook/ifood/points?userid=${id}`
+    const response = await fetch(url)
+    if (response.ok) {
+      const data = await response.json()
+      return data
+    } else {
+      throw new Error('Erro ao obter os dados do servidor')
+    }
   } catch (error) {
     throw new Error('Erro ao obter os dados do servidor')
   }
 }
+
