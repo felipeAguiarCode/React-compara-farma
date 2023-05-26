@@ -2,6 +2,7 @@ import * as XLSX from 'xlsx'
 
 export function downloadExcel(uuid: string) {
 
+  alert(uuid)
   console.log("download da loja de id" + uuid)
 
   const MYdata = [

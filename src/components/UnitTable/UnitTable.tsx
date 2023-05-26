@@ -1,50 +1,39 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-import TableRow from './UnitTableRow'
-import { downloadExcel } from '../../services/downloadExcel'
 import { useEffect, useState } from 'react'
-import { fetchDataById } from '../../services/pointsService'
+import { downloadExcel } from '../../services/downloadExcel'
+import UnitTableRow from './UnitTableRow'
 
+interface Data {
+  city: string;
+  id: number;
+  id_user: number;
+  name: string;
+  uf: string;
+  uuid: string;
+}
 
-function UnitTable() {
-
-  const [dataPointss, setDataPointss] = useState([]);
+export function UnitTable() {
+  const [dataPoints, setDataPoints] = useState<Data[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const fetchPoints = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetchDataById(22)
-        setDataPointss(response.data);
+        const response = await fetch(
+          "https://n8n.ninjadaautomacao.com/webhook/ifood/points?userid=22"
+        );
+
+        const json = await response.json()
+        setDataPoints(json.points)
+        setIsLoading(true)
+
       } catch (error) {
-        console.error('Erro ao obter os dados:', error);
+        console.error("Erro ao obter dados da API:", error)
       }
-    };
+    }
 
-    fetchPoints();
+    fetchData()
   }, [])
-
-  console.log(dataPointss)
-  const dataPoints = [
-    {
-      number: 2,
-      point: 'Farma Conde',
-      uf: 'SP',
-      city: 'São Paulo',
-      uuid: '122'
-    },
-    {
-      number: 3,
-      point: 'Farma Norte',
-      uf: 'SP',
-      city: 'São Paulo',
-      uuid: '455'
-    },
-  ]
-
-  const handleDownload = (uuid: string) => {
-    downloadExcel(uuid)
-  }
-
 
   return (
     <div className="">
@@ -66,21 +55,30 @@ function UnitTable() {
         </thead>
         <tbody>
 
-          {dataPoints.map((item, index) => (
-            <TableRow
-              key={index}
-              number={item.number}
-              point={item.point}
-              uf={item.uf}
-              city={item.city}
-              onClick={() => handleDownload(item.uuid)}
-            />
-          ))}
+          {!isLoading &&
+            <p>carregando...</p>
+          }
+
+          {isLoading &&
+            dataPoints.map((item: Data, index: number) => {
+
+              return <UnitTableRow
+                key={index}
+                city={item.city}
+                uf={item.uf}
+                number={item.id}
+                point={item.name}
+                onClick={
+                  () => downloadExcel(item.uuid)
+                }
+              />
+            })
+          }
 
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
 export default UnitTable
